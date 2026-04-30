@@ -21,7 +21,7 @@ Parittions should be aligned to 64KB
 
 1024KB app partition (retro-core?)
 1024KB app partition (Duke3D? Doom? Quake? Wolfenstein? OpenLara? Arduino? Free?)
-1024KB app partition
+1024KB app partition (Duke3D? Doom? Quake? Wolfenstein? OpenLara? Arduino? Free?)
 
 5MB-64KB storage:
 	- 512KB NES games
