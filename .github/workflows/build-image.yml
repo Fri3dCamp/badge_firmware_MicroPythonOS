@@ -57,7 +57,7 @@ jobs:
           mkdir -p boards/2024/build
           cd boards/2024/build
           sudo chown -R $(whoami) .
-          gh release download ${MICROPYTHON_VERSION} -R MicroPythonOS/MicroPythonOS
+          gh release download ${MICROPYTHONOS_VERSION} -R MicroPythonOS/MicroPythonOS
           gh release download ${RETRO_GO_VERSION} -R ThomasFarstrike/retro-go
           mv MicroPythonOS_esp32s3_*.bin MicroPythonOS_esp32s3.bin
           echo "Extract bootloader"
