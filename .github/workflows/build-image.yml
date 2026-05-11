@@ -1,0 +1,95 @@
+name: Build Release Image
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        description: Tag to build for
+  push:
+    tags:
+      - '*'
+
+jobs:
+  prepare:
+    name: Select the tag to build for and create Draft release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+    steps:
+      - name: Set tag
+        id: tag
+        run: |
+          if [[ "${{ github.event_name }}" != "push" ]]; then
+            tag="${{ github.event.inputs.tag }}"
+          else
+            tag=$(basename "${{ github.ref }}")
+          fi
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+      - name: Create GitHub Draft Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tag="${{ steps.tag.outputs.tag }}"
+          body="Pre-release for @${{ steps.tag.outputs.tag }}"
+          gh release create --draft "$tag" --title "$tag-pre" --notes "$body"
+
+  build_2024:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.tag }}
+          submodules: 'recursive'
+      - name: Load versions
+        run: cat boards/2024/images.env >> ${GITHUB_ENV}
+      - name: Build main firmware
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.4
+          target: esp32s3
+          path: 'boards/2024'
+      - name: Prepare images
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          mkdir -p boards/2024/build
+          cd boards/2024/build
+          sudo chown -R $(whoami) .
+          #mv bootloader/bootloader.bin bootloader_2024.bin
+          #mv nvs.bin nvs_2024.bin
+          #mv ota_data_initial.bin ota_data_2024.bin
+          #mv partition_table/partition-table.bin partition_table_2024.bin
+          gh release download v${MICROPYTHON_VERSION} -R MicroPythonOS/MicroPythonOS
+          gh release download v${RETRO_GO_VERSION} -R ThomasFarstrike/retro-go
+          echo "Building partition table"
+      - name: Build full images
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.2.2
+          target: esp32s3
+          path: 'boards/2024/build'
+          command: zip -j full_webflasher_2024.zip ../flash_args *2024.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_firmware_2024.img/g" ../flash_args | sed "s/ --baud 460800//g")
+      - name: Upload binaries to draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          cd boards/2024/build
+          gh release upload "${{ needs.prepare.outputs.tag }}" \
+            "bootloader_2024.bin" \
+            "nvs_2024.bin" \
+            "ota_data_2024.bin" \
+            "partition_table_2024.bin" \
+            "fri3d_firmware_2024.bin" \
+            "full_firmware_2024.img" \
+            "full_webflasher_2024.zip"
+
+

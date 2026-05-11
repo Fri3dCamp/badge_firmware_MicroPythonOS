@@ -1,0 +1,21 @@
+# Partition table for Fri3D Camp 2024 and 2026 Badge with OTA support using 16MB flash
+#
+# Also present in flash:
+# 0x0 images/bootloader.bin
+# 0x8000 images/partition-table.bin
+#
+# Notes:
+# - app partitions should be aligned at 0x10000 (64k block)
+# - otadata size should be 0x2000
+#
+# Name,   Type, SubType, Offset,   Size,     Flags
+otadata,  data, ota,     0x9000,   0x2000,
+nvs,      data, nvs,     0xb000,   0x5000,
+ota_0,app,ota_0,0x10000,0x400000
+ota_1,app,ota_1,0x410000,0x400000
+retro-core, app, ota_2, 0x810000, 0x100000,
+duke3d-go, app, ota_3, 0x910000, 0x100000,
+general, app, ota_4, 0xa10000, 0x100000,
+vfs, data, fat, 0xb10000, 04F0000
+
+
