@@ -21,14 +21,15 @@ MicroPythonOS:
 These could be slightly smaller, down to 3712KiB or even 3584KiB, but let's not forget to leave spare room for future growth.
 
 App partitions:
+
 - 1024KB retro-core (NES, GameBoy, GameBoy Color, etc)
 - 1024KB duke3d-go (Duke Nukem 3D)
 - 1024KB Doom? Quake? Wolfenstein? OpenLara? Arduino? Free? [OutRun-style 3D game](https://github.com/davidmonterocrespo24/esp32s3-arcade-3d)?
 
 5MB-64KB LittleFS2 storage:
-	- 1721 KB E1L1-2_compromise.grp.zip of [DukeNano3D](https://github.com/ThomasFarstrike/DukeNano3D)
-	- 512 KB preinstalled MicroPythonOS apps (Retro-Go Launcher, Duke Nukem 3d Launcher, Fri3d Camp App? QuasiBird?)
-	- 512 KB NES games
-	- 512 KB GB games
-	- 1863 KB free for more apps and artwork
+- 1721 KB Duke Nukem Shareware (E1L1-2_compromise.grp.zip of [DukeNano3D](https://github.com/ThomasFarstrike/DukeNano3D))
+- 512 KB preinstalled MicroPythonOS apps (Retro-Go Launcher, Duke Nukem 3d Launcher, Fri3d Camp App? QuasiBird?)
+- 512 KB a few NES games
+- 512 KB a few GB games
+- 1863 KB free for more apps and artwork
 
