@@ -57,10 +57,6 @@ jobs:
           mkdir -p boards/2024/build
           cd boards/2024/build
           sudo chown -R $(whoami) .
-          #mv bootloader/bootloader.bin bootloader_2024.bin
-          #mv nvs.bin nvs_2024.bin
-          #mv ota_data_initial.bin ota_data_2024.bin
-          #mv partition_table/partition-table.bin partition_table_2024.bin
           gh release download v${MICROPYTHON_VERSION} -R MicroPythonOS/MicroPythonOS
           gh release download v${RETRO_GO_VERSION} -R ThomasFarstrike/retro-go
           mv MicroPythonOS_esp32s3_*.bin MicroPythonOS_esp32s3.bin
