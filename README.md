@@ -6,7 +6,7 @@ This repository holds the main firmware for the Fri3d Camp 2024 and 2026 badges,
 
 Total internal flash size: 16384KB
 
-Paritions should be aligned to 64KB
+Partitions should be aligned to 64KB
 
 64KB preamble: 
 - 0x0 images/bootloader.bin
