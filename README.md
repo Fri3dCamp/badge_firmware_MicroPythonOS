@@ -6,27 +6,29 @@ This repository holds the main firmware for the Fri3d Camp 2024 and 2026 badges,
 
 Total internal flash size: 16384KB
 
-Parittions should be aligned to 64KB
+Paritions should be aligned to 64KB
 
-```
 64KB preamble: 
 - 0x0 images/bootloader.bin
 - 0x8000 images/partition-table.bin
 - 0x9000 otadata (size 0x2000)
 - 0xb000 nvs (size 0x5000)
 
-4096KB ota0
+MicroPythonOS:
+- 4096KB ota0
+- 4096KB ota1
 
-4096KB ota1
+These could be slightly smaller, down to 3712KiB or even 3584KiB, but let's not forget to leave spare room for future growth.
 
-1024KB app partition (retro-core?)
-1024KB app partition (Duke3D? Doom? Quake? Wolfenstein? OpenLara? Arduino? Free?)
-1024KB app partition (Duke3D? Doom? Quake? Wolfenstein? OpenLara? Arduino? Free?)
+App partitions:
+- 1024KB retro-core (NES, GameBoy, GameBoy Color, etc)
+- 1024KB duke3d-go (Duke Nukem 3D)
+- 1024KB Doom? Quake? Wolfenstein? OpenLara? Arduino? Free? [OutRun-style 3D game](https://github.com/davidmonterocrespo24/esp32s3-arcade-3d)?
 
-5MB-64KB storage:
-	- 512KB NES games
-	- 512KB GB games
-  - 512KB preinstalled apps
-	- 1024KB other game data files
-	- 2000KB free for apps and artwork
-```
+5MB-64KB LittleFS2 storage:
+	- 1721 KB E1L1-2_compromise.grp.zip of [DukeNano3D](https://github.com/ThomasFarstrike/DukeNano3D)
+	- 512 KB preinstalled MicroPythonOS apps (Retro-Go Launcher, Duke Nukem 3d Launcher, Fri3d Camp App? QuasiBird?)
+	- 512 KB NES games
+	- 512 KB GB games
+	- 1863 KB free for more apps and artwork
+
