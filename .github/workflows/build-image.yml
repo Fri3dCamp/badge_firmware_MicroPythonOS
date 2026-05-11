@@ -63,14 +63,14 @@ jobs:
           echo "Extract bootloader"
           dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
           hexdump -C test.bin | head
-     - name: Compile partition table
+      - name: Compile partition table
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: v5.4
           target: esp32s3
           path: 'boards/2024/build'
           command: gen_esp32part.py --flash-size 16MB ../shared/partitions.16mb.csv > partitions.16mb.bin
-     - name: Build full images
+      - name: Build full images
         uses: espressif/esp-idf-ci-action@v1
         with:
           esp_idf_version: v5.2.2
