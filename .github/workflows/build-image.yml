@@ -69,7 +69,7 @@ jobs:
           esp_idf_version: v5.4
           target: esp32s3
           path: 'boards/2024/build'
-          command: gen_esp32part.py --flash-size 16MB ../shared/partitions.16mb.csv > partitions.16mb.bin
+          command: gen_esp32part.py --flash-size 16MB ../../shared/partitions.16mb.csv > partitions.16mb.bin
       - name: Build full images
         uses: espressif/esp-idf-ci-action@v1
         with:
