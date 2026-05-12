@@ -60,6 +60,7 @@ jobs:
           gh release download ${MICROPYTHONOS_VERSION} -R MicroPythonOS/MicroPythonOS
           gh release download ${RETRO_GO_VERSION} -R ThomasFarstrike/retro-go
           mv MicroPythonOS_esp32s3_*.bin MicroPythonOS_esp32s3.bin
+          mv MicroPythonOS_esp32s3_*.ota MicroPythonOS_esp32s3.ota
           echo "Extract bootloader"
           dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
           hexdump -C test.bin | head
@@ -76,7 +77,7 @@ jobs:
           esp_idf_version: v5.2.2
           target: esp32s3
           path: 'boards/2024/build'
-          command: zip -j full_webflasher_2024.zip ../flash_args MicroPythonOS_esp32s3.bin bootloader.bin partitions.16mb.bin retro_go_core_2024.bin retro_go_duke3d_2024.bin retro_go_prboom_2024.bin littlefs2.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2024.img/g" ../flash_args | sed "s/ --baud 460800//g")
+          command: zip -j full_webflasher_2024.zip ../flash_args MicroPythonOS_esp32s3.ota bootloader.bin partitions.16mb.bin retro_go_core_2024.bin retro_go_duke3d_2024.bin retro_go_prboom_2024.bin littlefs2.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2024.img/g" ../flash_args | sed "s/ --baud 460800//g")
       - name: Upload binaries to draft release
         env:
           GH_TOKEN: ${{ github.token }}
