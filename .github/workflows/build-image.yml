@@ -48,7 +48,7 @@ jobs:
           ref: ${{ needs.prepare.outputs.tag }}
           submodules: 'recursive'
       - name: Load versions
-        run: cat boards/2024/images.env >> ${GITHUB_ENV}
+        run: cat boards/shared/images.env >> ${GITHUB_ENV}
       - name: Prepare images
         env:
           GH_TOKEN: ${{ github.token }}
@@ -80,5 +80,51 @@ jobs:
           gh release upload "${{ needs.prepare.outputs.tag }}" \
             "full_2024.img" \
             "full_webflasher_2024.zip"
+
+  build_2026:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare.outputs.tag }}
+          submodules: 'recursive'
+      - name: Load versions
+        run: cat boards/shared/images.env >> ${GITHUB_ENV}
+      - name: Prepare images
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          mkdir -p boards/2026/build
+          cd boards/2026/build
+          sudo chown -R $(whoami) .
+          gh release download ${MICROPYTHONOS_VERSION} -R MicroPythonOS/MicroPythonOS
+          gh release download ${RETRO_GO_VERSION} -R ThomasFarstrike/retro-go
+          mv MicroPythonOS_esp32s3_*.bin MicroPythonOS_esp32s3.bin
+          mv MicroPythonOS_esp32s3_*.ota MicroPythonOS_esp32s3.ota
+          echo "Extract bootloader"
+          dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
+          hexdump -C test.bin | head
+      - name: Build full images
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: v5.2.2
+          target: esp32s3
+          path: 'boards/2026/build'
+          command: gen_esp32part.py --flash-size 16MB ../../shared/partitions.16mb.csv > partitions.16mb.bin && zip -j full_webflasher_2026.zip ../flash_args MicroPythonOS_esp32s3.ota bootloader.bin partitions.16mb.bin retro_go_core_2026.bin retro_go_duke3d_2026.bin retro_go_prboom_2026.bin littlefs2.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2026.img/g" ../flash_args | sed "s/ --baud 460800//g")
+      - name: Upload binaries to draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          cd boards/2026/build
+          gh release upload "${{ needs.prepare.outputs.tag }}" \
+            "full_2026.img" \
+            "full_webflasher_2026.zip"
+
 
 
