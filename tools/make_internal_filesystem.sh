@@ -7,15 +7,9 @@ apps="$apps com.quasikili.quasibird com.quasikili.quasinametag"
 
 appdir="$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/apps/"
 
-# Map app name to dest folder override if different from source name
-declare -A app_dest_overrides=(
-    [com.micropythonos.doom_launcher]=com.micropythonos.doom
-)
-
 app_args=()
 for app in $apps; do
-    dest="${app_dest_overrides[$app]:-$app}"
-    app_args+=("$appdir/$app=/apps/$dest/")
+    app_args+=("$appdir/$app=/apps/$app/")
 done
 
 "$mydir"/mklittlefs_pack.sh -s 0x4F0000 -o "$mydir"/../littlefs2.bin \
