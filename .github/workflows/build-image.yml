@@ -64,6 +64,7 @@ jobs:
           echo "Extract bootloader"
           dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
           hexdump -C test.bin | head
+          truncate -s -3 littlefs2.bin
       - name: Build full images
         uses: espressif/esp-idf-ci-action@v1
         with:
@@ -109,6 +110,7 @@ jobs:
           echo "Extract bootloader"
           dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
           hexdump -C test.bin | head
+          truncate -s -3 littlefs2.bin
       - name: Build full images
         uses: espressif/esp-idf-ci-action@v1
         with:
