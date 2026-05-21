@@ -3,7 +3,8 @@
 mydir=$(readlink -f "$0")
 mydir=$(dirname "$mydir")
 
-apps="com.micropythonos.duke_launcher com.micropythonos.doom_launcher com.micropythonos.nes_launcher com.micropythonos.gameboy_launcher"
+# retro-go launchers:
+apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # not com.micropythonos.doom_launcher because doom is not included
 # utilities:
 apps="$apps com.micropythonos.imageview"
 # demos
@@ -36,11 +37,12 @@ for app in $apps; do
 done
 
 #"$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gb/best" \
+#"$HOME/sources/DukeNano3D/outputs/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Episode_1_Level_1_and_2_nearcomplete.grp.zip" \
 
 "$mydir"/mklittlefs_pack.sh -s 0x700000 -o "$mydir"/../littlefs2.bin \
 "internalsd_2026/=/" \
-"$HOME/sources/DukeNano3D/outputs/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Episode_1_Level_1_and_2_nearcomplete.grp.zip" \
 "$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/best" \
+"$HOME/sources/DukeNano3D/outputs/E1L1-6_nearcomplete.grp.zip=/roms/duke3d/Episode_1_All_6_Levels_nearcomplete.grp.zip" \
 "$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png" \
 "$HOME/ESP32_NES/microsd_final/roms/gbc/best/Chessmaster, The (USA).zip=/roms/gb/best/Chessmaster, The (USA).zip" \
 "$HOME/ESP32_NES/microsd_final/romart/gbc/1/1C13DBB0.png=/romart/gb/1/1C13DBB0.png" \

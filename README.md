@@ -34,10 +34,14 @@ App partitions:
 
 7 MiB LittleFS2 storage:
 
-- 2 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size: 1.3 MiB (1 level, minimal) to 2.5 MiB (6 levels, near complete)
+- 2 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size: 1.3 MiB (1 level, minimal) to 2.5 MiB (all 6 levels, near complete)
 - 1 MiB MicroPythonOS apps (Retro-Core Launcher, Duke Nukem 3D Launcher, lots of other games, apps and utilities)
 - 1 MiB NES games + cover art
 - 1 MiB GameBoy games + cover art
 - 0.5 MiB Configuration files
 - 1.5 MiB free space (for savegames, recordings, settings, etc.)
+
+# Notes
+
+- The config file `internalsd_2026/retro-go/config/global.json` is currently set to "buzzer" to have some audio out, so to have headset output, the user has to change this in the Duke Launcher settings.
 
