@@ -21,7 +21,7 @@ apps="$apps com.micropythonos.dj_addon"
 # com.micropythonos.lora_chat # would be nice to exclude noise
 # com.micropythonos.ir_remote # would be nice to have blaster support
 # com.micropythonos.file_manager # when it's functional
-# com.micropythonos.time_of_flight # too big
+# com.micropythonos.time_of_flight # too big, maybe when compiled .mpy
 
 # Cleanups
 pushd "$HOME/projects/MicroPythonOS/claude/MicroPythonOS"
@@ -45,6 +45,7 @@ done
 "$HOME/ESP32_NES/microsd_final/roms/gbc/best/Chessmaster, The (USA).zip=/roms/gb/best/Chessmaster, The (USA).zip" \
 "$HOME/ESP32_NES/microsd_final/romart/gbc/1/1C13DBB0.png=/romart/gb/1/1C13DBB0.png" \
 "$HOME/ESP32_NES/microsd_final/roms/nes/best/=/roms/nes/best" \
+"$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/0/053014FF.png" \
 "$HOME/ESP32_NES/microsd_final/roms/nes/homebrew/2048 (Blurred Lines).zip=/roms/nes/homebrew/2048 (Blurred Lines).zip" \
 "$HOME/ESP32_NES/microsd_final/romart/nes/2048 (Blurred Lines).png=/romart/nes/2048 (Blurred Lines).png" \
 "$HOME/ESP32_NES/microsd_final/roms/gbc/homebrew/Columns_DX.zip=/roms/gb/homebrew/Columns_DX.zip" \
