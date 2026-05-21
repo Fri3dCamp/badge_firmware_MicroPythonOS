@@ -15,21 +15,29 @@ Partitions should be aligned to 64KB
 - 0xb000 nvs (size 0x5000)
 
 MicroPythonOS:
-- 4096KB ota0
-- 4096KB ota1
+- 3584 KiB = 3.5 MiB ota0
+- 3584 KiB = 3.5 MiB ota1
 
-These could be slightly smaller, down to 3712KiB or even 3584KiB, but let's not forget to leave spare room for future growth.
+The current *unified* ESP32S3 build that has support for all ESP32S3-based devices
+that MicroPythonOS supports is 3386 KiB in size, so this leaves 198 KiB for future growth.
+
+If at some point in the future, that turns out not to be enough, further size optimization can be achieved
+by making a *non-unified*, custom build for the Fri3d Camp badges, excluding all unnecessary drivers and board support.
+
+Note that this is not a miracle space saver, as these are "frozen" (precompiled and builtin) so they don't take up that much space anyhow.
+But it could save an estimated 100 KiB, maybe 150 KiB, so that should provide enough leeway in case it's ever needed.
 
 App partitions:
 
-- 1024KB retro-core (NES, GameBoy, GameBoy Color, etc)
+- 1024 - 64 KiB (taken by preamble) for retro-core to emulate Nintendo Entertainment System, GameBoy, GameBoy Color, Game & Watch, Sega Master System, Game Gear, Coleco ColecoVision, NEC PC Engine and Atari Lynx
 - 1024KB duke3d-go (Duke Nukem 3D)
-- 1024KB Doom? Quake? Wolfenstein? OpenLara? Arduino? Free? [OutRun-style 3D game](https://github.com/davidmonterocrespo24/esp32s3-arcade-3d)?
 
-5MB-64KB LittleFS2 storage:
-- 1721 KB Duke Nukem Shareware (E1L1-2_compromise.grp.zip of [DukeNano3D](https://github.com/ThomasFarstrike/DukeNano3D))
-- 512 KB preinstalled MicroPythonOS apps (Retro-Go Launcher, Duke Nukem 3d Launcher, Fri3d Camp App? QuasiBird?)
-- 512 KB a few NES games
-- 512 KB a few GB games
-- 1863 KB free for more apps and artwork
+7 MiB LittleFS2 storage:
+
+- 2 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size: 1.3 MiB (1 level, minimal) to 2.5 MiB (6 levels, near complete)
+- 1 MiB MicroPythonOS apps (Retro-Core Launcher, Duke Nukem 3D Launcher, lots of other games, apps and utilities)
+- 1 MiB NES games + cover art
+- 1 MiB GameBoy games + cover art
+- 0.5 MiB Configuration files
+- 1.5 MiB free space (for savegames, recordings, settings, etc.)
 
