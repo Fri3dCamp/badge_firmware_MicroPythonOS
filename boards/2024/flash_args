@@ -2,8 +2,9 @@
 0x0 bootloader.bin
 0x8000 partitions.16mb.bin
 0x10000 MicroPythonOS_esp32s3.ota
-0x410000 MicroPythonOS_esp32s3.ota
-0x810000 retro_go_core_2024.bin
-0x910000 retro_go_duke3d_2024.bin
-0xA10000 retro_go_prboom_2024.bin
-0xB10000 littlefs2.bin
+0x390000 MicroPythonOS_esp32s3.ota
+0x710000 retro_go_core_2024.bin
+0x800000 retro_go_duke3d_2024.bin
+0x900000 littlefs2.bin
+
+
