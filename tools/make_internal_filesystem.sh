@@ -34,17 +34,19 @@ app_args=()
 for app in $apps; do
     app_args+=("$appdir/$app=/apps/$app/")
 done
-#
-"$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gb/best" \
 
-"$mydir"/mklittlefs_pack.sh -s 0x4F0000 -o "$mydir"/../littlefs2.bin \
+#"$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gb/best" \
+
+"$mydir"/mklittlefs_pack.sh -s 0x700000 -o "$mydir"/../littlefs2.bin \
 "internalsd_2026/=/" \
-"$HOME/sources/DukeNano3D/outputs/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_E1L1-2_compromise.grp.zip" \
+"$HOME/sources/DukeNano3D/outputs/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Episode_1_Level_1_and_2_nearcomplete.grp.zip" \
 "$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/best" \
 "$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png" \
 "$HOME/ESP32_NES/microsd_final/roms/gbc/best/Chessmaster, The (USA).zip=/roms/gb/best/Chessmaster, The (USA).zip" \
 "$HOME/ESP32_NES/microsd_final/romart/gbc/1/1C13DBB0.png=/romart/gb/1/1C13DBB0.png" \
 "$HOME/ESP32_NES/microsd_final/roms/nes/best/=/roms/nes/best" \
-"$HOME/ESP32_NES/internalsd_zips/roms/nes/homebrew/2048 (Blurred Lines).zip=/roms/nes/homebrew/2048 (Blurred Lines).zip" \
-"$HOME/ESP32_NES/internalsd_zips/roms/gbc/homebrew/Columns_DX.zip=/roms/gb/homebrew/Columns_DX.zip" \
+"$HOME/ESP32_NES/microsd_final/roms/nes/homebrew/2048 (Blurred Lines).zip=/roms/nes/homebrew/2048 (Blurred Lines).zip" \
+"$HOME/ESP32_NES/microsd_final/romart/nes/2048 (Blurred Lines).png=/romart/nes/2048 (Blurred Lines).png" \
+"$HOME/ESP32_NES/microsd_final/roms/gbc/homebrew/Columns_DX.zip=/roms/gb/homebrew/Columns_DX.zip" \
+"$HOME/ESP32_NES/microsd_final/romart/gbc/Columns_DX.png=/romart/gb/Columns_DX.png" \
 "${app_args[@]}"

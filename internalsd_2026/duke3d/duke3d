@@ -1,6 +1,5 @@
-
 [Screen Setup]
-Shadows = 0
+Shadows = 1
 Password = ""
 Detail = 1
 Tilt = 1
@@ -12,11 +11,11 @@ ScreenHeight = 240
 Fullscreen = 0
 ScreenSize = 8
 ExtScreenSize = 0
-ScreenGamma = 16
+ScreenGamma = 55
 
 [Sound Setup]
-FXVolume = 64
-MusicVolume = 124
+FXVolume = 236
+MusicVolume = 236
 FXDevice = 8
 MusicDevice = 3
 SoundToggle = 1
@@ -27,7 +26,7 @@ MusicToggle = 1
 ReverseStereo = 0
 
 [Misc]
-Executions = 3
+Executions = 1
 RunMode = 0
 Crosshairs = 1
 ShowCinematics = 1
@@ -136,3 +135,4 @@ CommbatMacro#6 = "Damn, you're ugly."
 CommbatMacro#7 = "Ha ha ha...Wasted!"
 CommbatMacro#8 = "You suck!"
 CommbatMacro#9 = "AARRRGHHHHH!!!"
+
