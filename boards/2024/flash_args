@@ -5,6 +5,6 @@
 0x390000 MicroPythonOS_esp32s3.ota
 0x710000 retro_go_core_2024.bin
 0x800000 retro_go_duke3d_2024.bin
-0x900000 littlefs2.bin
+0x900000 littlefs2_2024.bin
 
 
