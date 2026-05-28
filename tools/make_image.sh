@@ -1,6 +1,7 @@
 mydir=$(readlink -f "$0")
 mydir=$(dirname "$mydir")
 
+
 . ~/projects/MicroPythonOS/claude/MicroPythonOS/lvgl_micropython/lib/esp-idf/export.sh
 
 gen_esp32part.py --flash-size 16MB boards/shared/partitions.16mb.csv > partitions.16mb.bin
