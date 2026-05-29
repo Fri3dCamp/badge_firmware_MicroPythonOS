@@ -6,7 +6,7 @@ mydir=$(dirname "$mydir")
 # retro-go launchers:
 apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # not com.micropythonos.doom_launcher because doom is not included
 # utilities:
-apps="$apps com.micropythonos.imageview com.micropythonos.filemanager" # com.micropythonos.showfonts is just too damn slow
+apps="$apps com.micropythonos.imageview com.micropythonos.filemanager com.quasikili.quasicalculator" # com.micropythonos.showfonts is just too damn slow
 # demos
 apps="$apps com.micropythonos.confetti com.micropythonos.imu"
 # audio:
