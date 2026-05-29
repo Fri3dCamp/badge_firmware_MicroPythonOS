@@ -19,7 +19,7 @@ MicroPythonOS:
 - 3584 KiB = 3.5 MiB ota1
 
 The current *unified* ESP32S3 build that has support for all ESP32S3-based devices
-that MicroPythonOS supports is 3386 KiB in size, so this leaves 198 KiB for future growth.
+that MicroPythonOS supports is 3386 KiB in size, so this leaves 140 KiB for future growth.
 
 If at some point in the future, that turns out not to be enough, further size optimization can be achieved
 by making a *non-unified*, custom build for the Fri3d Camp badges, excluding all unnecessary drivers and board support.
@@ -38,10 +38,10 @@ App partitions:
 - 1 MiB MicroPythonOS apps (Retro-Core Launcher, Duke Nukem 3D Launcher, lots of other games, apps and utilities)
 - 1 MiB NES games + cover art
 - 1 MiB GameBoy games + cover art
-- 0.5 MiB Configuration files
-- 1.5 MiB free space (for savegames, recordings, settings, etc.)
+- 0.5 MiB Fri3d Camp logo image and configuration files
+- 1.5 MiB free space (for savegames, sound recordings, high scores, etc.)
 
 # Notes
 
-- The config file `internalsd_2026/retro-go/config/global.json` is currently set to "buzzer" to have some audio out, so to have headset output, the user has to change this in the Duke Launcher settings.
+- The config file `internalsd/2026/retro-go/config/global.json` is currently set to "buzzer" to have some audio out, so to have headset output, the user has to change this in the Duke Launcher settings. This could be automated (for example, detecting the Communicator Add-On) but for now it's manual.
 
