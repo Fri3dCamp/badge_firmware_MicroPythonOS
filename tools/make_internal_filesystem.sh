@@ -45,8 +45,8 @@ make_for_year() {
 	#"$HOME/sources/DukeNano3D/outputs/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Episode_1_Level_1_and_2_nearcomplete.grp.zip" \
 
 	"$mydir"/mklittlefs_pack.sh -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
-	"internalsd_shared=/" \
-	"internalsd_$year=/" \
+	"internalsd/shared=/" \
+	"internalsd/$year=/" \
 	"$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/best" \
 	"$HOME/sources/DukeNano3D/outputs/E1L1-6_nearcomplete.grp.zip=/roms/duke3d/Episode_1_All_6_Levels_nearcomplete.grp.zip" \
 	"$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png" \
