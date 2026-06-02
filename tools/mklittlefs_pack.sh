@@ -138,6 +138,7 @@ for map in "${MAPPINGS[@]}"; do
 
     else
         echo "warning: '$src' is neither a file nor a directory, skipping" >&2
+	exit 1
     fi
 done
 
@@ -146,10 +147,13 @@ echo "  size:       $SIZE"
 echo "  block:      $BLOCK"
 echo "  page:       $PAGE"
 echo "  output:     $OUTPUT"
-echo "  files:"
-while IFS= read -r line; do
-    echo "    $line"
-done < "$FROMFILE"
+echo "  files (sorted by size):"
+while IFS= read -r dest_rel; do
+    src_size=$(stat -Lc '%s' "$TMPDIR/$dest_rel")
+    printf '%s\t%s\n' "$src_size" "$dest_rel"
+done < "$FROMFILE" \
+  | sort -k1,1n \
+  | awk -F'\t' '{ printf "    %10d  %s\n", $1, $2 }'
 
 "$MKFS" -c "$TMPDIR" -T "$FROMFILE" \
     -b "$BLOCK" -p "$PAGE" -s "$SIZE" \
