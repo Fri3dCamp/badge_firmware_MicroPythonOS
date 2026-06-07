@@ -13,4 +13,6 @@ retrodir="/home/user/sources/DukeNano3D/retro-go-for-DukeNano3D"
 
 ls -al "$retrodir"/retro-core/build/retro-core.bin "$retrodir"/duke3d-go/build/duke3d-go.bin
 
-python -m esptool --chip esp32s3 merge_bin --fill-flash-size=16MB --output image_esp32s3.bin 0x0 "$mposdir"/bootloader/bootloader.bin 0x8000 partitions.16mb.bin 0x10000 "$mposdir"/micropython.bin 0x710000 "$retrodir"/retro-core/build/retro-core.bin 0x800000 "$retrodir"/duke3d-go/build/duke3d-go.bin 0x900000 "$mydir"/../littlefs2_2024.bin
+python -m esptool --chip esp32s3 merge_bin --fill-flash-size=16MB --output image_fri3d_2024.bin 0x0 "$mposdir"/bootloader/bootloader.bin 0x8000 partitions.16mb.bin 0x10000 "$mposdir"/micropython.bin 0x710000 "$retrodir"/retro-core/build/retro-core.bin 0x800000 "$retrodir"/duke3d-go/build/duke3d-go.bin 0x900000 "$mydir"/../littlefs2_2024.bin
+
+python -m esptool --chip esp32s3 merge_bin --fill-flash-size=16MB --output image_fri3d_2026.bin 0x0 "$mposdir"/bootloader/bootloader.bin 0x8000 partitions.16mb.bin 0x10000 "$mposdir"/micropython.bin 0x710000 "$retrodir"/retro-core/build/retro-core.bin 0x800000 "$retrodir"/duke3d-go/build/duke3d-go.bin 0x900000 "$mydir"/../littlefs2_2026.bin

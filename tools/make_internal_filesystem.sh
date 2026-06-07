@@ -49,11 +49,13 @@ make_for_year() {
 	#"$HOME/ESP32_NES/microsd_final/roms/gg/GG Shinobi II, The ~ Shinobi II - The Silent Fury (World).zip=/roms/gg/GG Shinobi II, The ~ Shinobi II - The Silent Fury (World).zip" \
 	#"$HOME/ESP32_NES/microsd_final/roms/sms/world/Sonic The Hedgehog (UE).sms.zip=/roms/sms/world/Sonic The Hedgehog (UE).sms.zip" \
 	#"$HOME/sources/DukeNano3D/outputs/E1L1-6_pngquant1.grp.zip=/roms/duke3d/E1L1-6_pngquant1.grp.zip" \
+	#"$HOME/sources/DukeNano3D/outputs/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_nearcomplete.grp.zip" \
+	#"$HOME/sources/DukeNano3D/outputs/E1L1-6_pngquant3.grp.zip=/roms/duke3d/E1L1-6_pngquant3.grp.zip" \
 
 	"$mydir"/mklittlefs_pack.sh -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
 	"internalsd/shared=/" \
 	"internalsd/$year=/" \
-	"$HOME/sources/DukeNano3D/outputs/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_nearcomplete.grp.zip" \
+	"$HOME/sources/DukeNano3D/outputs_shareware/E1L1-2_nearcomplete.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_nearcomplete.grp.zip" \
 	"$HOME/ESP32_NES/microsd_final/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip=/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip" \
 	"$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/" \
 	"$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png" \
