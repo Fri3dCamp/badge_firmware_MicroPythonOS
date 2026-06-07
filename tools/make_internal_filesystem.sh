@@ -48,6 +48,7 @@ make_for_year() {
 	#"$HOME/ESP32_NES/microsd_final/roms/gg/Tails' Sky Patrol (J) [!].gg.zip=/roms/gg/Tails' Sky Patrol (J) [!].gg.zip" \
 	#"$HOME/ESP32_NES/microsd_final/roms/gg/GG Shinobi II, The ~ Shinobi II - The Silent Fury (World).zip=/roms/gg/GG Shinobi II, The ~ Shinobi II - The Silent Fury (World).zip" \
 	#"$HOME/ESP32_NES/microsd_final/roms/sms/world/Sonic The Hedgehog (UE).sms.zip=/roms/sms/world/Sonic The Hedgehog (UE).sms.zip" \
+	#"$HOME/sources/DukeNano3D/outputs/E1L1-6_pngquant1.grp.zip=/roms/duke3d/E1L1-6_pngquant1.grp.zip" \
 
 	"$mydir"/mklittlefs_pack.sh -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
 	"internalsd/shared=/" \
