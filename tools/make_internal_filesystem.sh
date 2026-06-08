@@ -29,6 +29,7 @@ mposdir="$HOME/projects/MicroPythonOS/claude/MicroPythonOS"
 appdir="$mposdir/internal_filesystem/apps/"
 compiledappdir="/tmp/compiled_app_dir"
 
+# Precompiling the apps saves around 156KiB and makes them faster to start
 "$mposdir"/scripts/compile_dir.sh "$appdir" "$compiledappdir"
 
 app_args=()
