@@ -35,6 +35,8 @@ Options:
   -s <size>         Image size in bytes (required; supports K/M/G suffixes)
   -b <blocksize>    Block size (default: 4096)
   -p <pagesize>     Page size (default: 256)
+  -r <readsize>     Read size (default: mklittlefs default)
+  -m <memory>       Block caches in bytes (default: mklittlefs default)
   -o <image_file>   Output image file (required)
   --mklittlefs      Path to mklittlefs binary (default: $MKFS)
   -h                Show this help
@@ -45,6 +47,8 @@ EOF
 SIZE=""
 BLOCK=4096
 PAGE=256
+READ=""
+MEMORY=""
 OUTPUT=""
 MAPPINGS=()
 
@@ -63,6 +67,8 @@ while [[ $# -gt 0 ]]; do
         -s) SIZE=$(to_bytes "$2"); shift 2 ;;
         -b) BLOCK="$2"; shift 2 ;;
         -p) PAGE="$2"; shift 2 ;;
+        -r) READ="$2"; shift 2 ;;
+        -m) MEMORY="$2"; shift 2 ;;
         -o) OUTPUT="$2"; shift 2 ;;
         --mklittlefs) MKFS="$2"; shift 2 ;;
         -h) usage ;;
@@ -155,9 +161,14 @@ done < "$FROMFILE" \
   | sort -k1,1n \
   | awk -F'\t' '{ printf "    %10d  %s\n", $1, $2 }'
 
-"$MKFS" -c "$TMPDIR" -T "$FROMFILE" \
-    -b "$BLOCK" -p "$PAGE" -s "$SIZE" \
-    -d 5 \
-    "$OUTPUT"
+MKFS_OPTS=(
+    -c "$TMPDIR" -T "$FROMFILE"
+    -b "$BLOCK" -p "$PAGE" -s "$SIZE"
+    -d 5
+)
+[[ -n "$READ"   ]] && MKFS_OPTS+=(-r "$READ")
+[[ -n "$MEMORY" ]] && MKFS_OPTS+=(-m "$MEMORY")
+
+"$MKFS" "${MKFS_OPTS[@]}" "$OUTPUT"
 
 echo "=== Done: $OUTPUT ==="

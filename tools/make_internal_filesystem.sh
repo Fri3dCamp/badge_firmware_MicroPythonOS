@@ -57,11 +57,16 @@ make_for_year() {
 	#"$HOME/sources/DukeNano3D/outputs/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_compromise.grp.zip" \
 	#"$HOME/sources/DukeNano3D/outputs/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_compromise.grp.zip" \
 	#"$HOME/sources/DukeNano3D/outputs/E1-3L1_compromise.grp.zip=/roms/duke3d/E1-3L1_compromise.grp.zip" \
+	#"$HOME/sources/DukeNano3D/outputs_precalculated_pngs_pngquant_40-71_2_iterations_500/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_compromise.grp.zip" \
+	#"$HOME/sources/DukeNano3D/outputs_precalculated_pngs_pngquant_40-71_2_iterations_500/E1L1-6_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_6_compromise.grp.zip" \
 
-	"$mydir"/mklittlefs_pack.sh -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
+
+	# -m 1024 -r 256: inline_max = min(1024, 1022, 512) = 512 bytes. Files ≤512 B get inlined during image creation
+	#"$mydir"/mklittlefs_pack.sh -b 4096 -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
+	"$mydir"/mklittlefs_pack.sh -b 4096 -r 256 -m 1024  -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
 	"internalsd/shared=/" \
 	"internalsd/$year=/" \
-	"$HOME/sources/DukeNano3D/outputs_precalculated_pngs_pngquant_40-71_2/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_and_2_compromise.grp.zip" \
+	"$HOME/sources/DukeNano3D/outputs_precalculated_pngs_pngquant_40-71_2_iterations_500/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip" \
 	"$HOME/ESP32_NES/microsd_final/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip=/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip" \
 	"$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/" \
 	"$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png" \
@@ -85,6 +90,7 @@ make_for_year() {
 make_for_year 2024
 make_for_year 2026
 
+echo "Extracting..."
 cd "$mydir"
 rm -rf ../extract
 mkdir ../extract
