@@ -113,7 +113,7 @@ add_single_file() {
 
     local parent; parent=$(dirname "$dest_rel")
     mkdir -p "$TMPDIR/$parent"
-    ln -s "$src_abs" "$TMPDIR/$dest_rel"
+    ln -sf "$src_abs" "$TMPDIR/$dest_rel"
     echo "$dest_rel" >> "$FROMFILE"
 }
 
