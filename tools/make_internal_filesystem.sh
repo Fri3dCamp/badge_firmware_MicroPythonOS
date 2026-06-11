@@ -57,6 +57,7 @@ else
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/builtin=/builtin")
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/lib=/lib")
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/main.py=/main.py")
+	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/data/com.micropythonos.system.wifiservice/config.json=/data/com.micropythonos.system.wifiservice/config.json")
 fi
 
 #"$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gb/best" \
