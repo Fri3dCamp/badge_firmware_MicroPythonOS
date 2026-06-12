@@ -36,7 +36,7 @@ extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/homebrew/Columns_DX.zip=/roms/gb
 if [ -z "$debug" ]; then
 	#extra+=("$HOME/sources/DukeNano3D/outputs_precalculated_pngs_pngquant_40-71_2_iterations_500/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
 	#extra+=("$HOME/sources/DukeNano3D/outputs/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_2_compromise.grp.zip")
-	extra+=("$HOME/sources/DukeNano3D/outputs_onlysmaller_replacefile/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
+	extra+=("$HOME/sources/DukeNano3D/outputs_onlysmaller_replaceskyline/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip=/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Turbo Sub (1991) [a1].lnx.zip=/roms/lnx/Turbo Sub (1991) [a1].lnx.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Warbirds (1990) [o1].lnx.zip=/roms/lnx/Warbirds (1990) [o1].lnx.zip")
@@ -90,6 +90,7 @@ done
 make_for_year() {
 	year="$1"
 
+	rm "$mydir"/../littlefs2_$year.bin
 	# -m 1024 -r 256: inline_max = min(1024, 1022, 512) = 512 bytes. Files ≤512 B get inlined during image creation
 	"$mydir"/mklittlefs_pack.sh -b 4096 -r 256 -m 1024  -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
         "internalsd/shared=/" \
