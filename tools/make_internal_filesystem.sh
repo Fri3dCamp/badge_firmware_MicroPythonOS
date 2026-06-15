@@ -12,7 +12,7 @@ apps="$apps com.micropythonos.imageview com.micropythonos.file_manager com.quasi
 # demos
 apps="$apps com.micropythonos.confetti com.micropythonos.showfonts"
 # hardware tests
-apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropythonos.lora_chat com.micropythonos.ir_remote"
+apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropythonos.lora_chat com.micropythonos.ir_remote com.micropythonos.showbattery"
 # audio:
 apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder"
 # games:
