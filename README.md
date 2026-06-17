@@ -1,6 +1,8 @@
 # Fri3d Camp Badge firmware based on MicroPythonOS
 
-This repository holds the main firmware for the Fri3d Camp 2024 and 2026 badges, with MicroPythonOS as the main OS, responsible for Over-The-Air updates.
+This repository holds the main firmware for the Fri3d Camp 2024 and 2026 badges.
+
+It uses [MicroPythonOS](https://MicroPythonOS.com) as the main operating system and [Retro-Go](https://github.com/ducalex/retro-go) for dedicated gaming partitions.
 
 ## Partition layout
 
@@ -19,7 +21,7 @@ MicroPythonOS:
 - 3584 KiB = 3.5 MiB ota1
 
 The current *unified* ESP32S3 build that has support for all ESP32S3-based devices
-that MicroPythonOS supports is 3386 KiB in size, so this leaves 140 KiB for future growth.
+that MicroPythonOS supports is 3476 KiB in size, so this leaves 108 KiB for future growth.
 
 If at some point in the future, that turns out not to be enough, further size optimization can be achieved
 by making a *non-unified*, custom build for the Fri3d Camp badges, excluding all unnecessary drivers and board support.
@@ -34,12 +36,16 @@ App partitions:
 
 7 MiB LittleFS2 storage:
 
-- 2 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size: 1.3 MiB (1 level, minimal) to 2.5 MiB (all 6 levels, near complete)
+- 2 MiB GameBoy, NES, Sega games + cover art
+- 1.7 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size with 4 of the 6 levels included
 - 1 MiB MicroPythonOS apps (Retro-Core Launcher, Duke Nukem 3D Launcher, lots of other games, apps and utilities)
-- 1 MiB NES games + cover art
-- 1 MiB GameBoy games + cover art
-- 0.5 MiB Fri3d Camp logo image and configuration files
-- 1.5 MiB free space (for savegames, sound recordings, high scores, etc.)
+- 0.2 MiB custom boot_splash.png, sample images, sample audio, configuration files
+
+= 4.6 MiB
+
++ 1.75 MiB LittleFS2 filesystem overhead (6.4 KiB per file, quite a lot!)
+
+Leaves: 0.75 MiB free space (for savegames, sound recordings, high scores, etc.)
 
 # Notes
 
