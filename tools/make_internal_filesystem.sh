@@ -54,6 +54,7 @@ if [ -z "$debug" ]; then
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/pce/World Court Tennis (U).pce.zip=/roms/pce/World Court Tennis (U).pce.zip")
 	# Precompiling the apps saves around 156KiB and makes them faster to start
 	compiledappdir="/tmp/compiled_app_dir"
+	rm -rf "$compiledappdir"
 	"$mposdir"/scripts/compile_dir.sh "$appdir" "$compiledappdir"
 	appdir="$compiledappdir"
 else
