@@ -37,15 +37,14 @@ App partitions:
 7 MiB LittleFS2 storage:
 
 - 2 MiB GameBoy, NES, Sega games + cover art
-- 1.7 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size with 4 of the 6 levels included
-- 1 MiB MicroPythonOS apps (Retro-Core Launcher, Duke Nukem 3D Launcher, lots of other games, apps and utilities)
-- 0.2 MiB custom boot_splash.png, sample images, sample audio, configuration files
+- 2 MiB [Duke Nano 3D](https://github.com/ThomasFarstrike/DukeNano3D) Duke Nukem 3D Shareware, repacked for size with 4 of the 6 levels included
+- 0.5 MiB MicroPythonOS apps (Retro-Core Launcher, Duke Nukem 3D Launcher, lots of other games, apps and utilities)
+- 0.5 MiB custom boot_splash.png, sample images, sample audio, configuration files
+- 1 MiB LittleFS2 filesystem overhead (4KiB block size, wear leveling, power out resilience)
 
-= 4.6 MiB
+Total space used: 6 MiB
 
-+ 1.75 MiB LittleFS2 filesystem overhead (6.4 KiB per file, quite a lot!)
-
-Leaves: 0.75 MiB free space (for savegames, sound recordings, high scores, etc.)
+Total space free: 1 MiB free space (for savegames, sound recordings, high scores, etc.)
 
 # Notes
 
