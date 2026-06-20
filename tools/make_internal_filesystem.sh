@@ -8,7 +8,7 @@ debug="$1"
 # retro-go launchers:
 apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # not com.micropythonos.doom_launcher because doom is not included
 # utilities:
-apps="$apps com.micropythonos.imageview com.micropythonos.file_manager com.quasikili.quasicalculator"
+apps="$apps com.micropythonos.imageview com.quasikili.quasicalculator"
 # demos
 apps="$apps com.micropythonos.confetti com.micropythonos.showfonts"
 # hardware tests
@@ -43,11 +43,24 @@ if [ -z "$debug" ]; then
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Warbirds (1990) [o1].lnx.zip=/roms/lnx/Warbirds (1990) [o1].lnx.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/europe/Castle of Illusion Starring Mickey Mouse (E).sms.zip=/roms/sms/Castle of Illusion Starring Mickey Mouse (E).sms.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip=/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip")
+
+	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gb/homebrew=/roms/gb/homebrew")
+	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gb=/romart/gb")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png")
+
+	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gbc/homebrew=/roms/gbc/homebrew")
+	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gbc=/romart/gbc")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gbc/")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/1/1C13DBB0.png=/romart/gbc/1/1C13DBB0.png")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/best/=/roms/nes/")
+
+	# Too big:
+	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/nes/homebrew/=/roms/nes/homebrew")
+	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/nes/=/romart/nes")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/0/053014FF.png")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/homebrew/2048 (Blurred Lines).zip=/roms/nes/homebrew/2048 (Blurred Lines).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/2048 (Blurred Lines).png=/romart/nes/2048 (Blurred Lines).png")
