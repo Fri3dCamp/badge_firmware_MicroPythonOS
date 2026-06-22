@@ -121,6 +121,11 @@ for map in "${MAPPINGS[@]}"; do
     src="${map%%=*}"
     dest="${map#*=}"
 
+    if [[ ! -e "$src" ]]; then
+        echo "error: source '$src' does not exist" >&2
+        exit 1
+    fi
+
     # Resolve absolute source path
     src_abs=$(readlink -f "$src")
 

@@ -4,6 +4,11 @@ mydir=$(readlink -f "$0")
 mydir=$(dirname "$mydir")
 
 debug="$1"
+if [ "$debug" == "2024" -o "$debug" == "2026" ]; then
+	echo "You used 2024 or 2026 as an argument but this script does both!"
+	echo "Usage: $0 [debug]"
+	exit 1
+fi
 
 # retro-go launchers:
 apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # not com.micropythonos.doom_launcher because doom is not included
@@ -38,7 +43,8 @@ if [ -z "$debug" ]; then
 	#extra+=("$HOME/sources/DukeNano3D/outputs/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_2_compromise.grp.zip")
 	#extra+=("$HOME/sources/DukeNano3D/outputs_onlysmaller_replaceskyline/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
 	#extra+=("$HOME/sources/DukeNano3D/outputs_starryskyline_fixpipebomb/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
-	extra+=("$HOME/sources/DukeNano3D/outputs_fix_title_images/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
+	#extra+=("$HOME/sources/DukeNano3D/outputs_fix_title_images/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
+	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip=/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Turbo Sub (1991) [a1].lnx.zip=/roms/lnx/Turbo Sub (1991) [a1].lnx.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Warbirds (1990) [o1].lnx.zip=/roms/lnx/Warbirds (1990) [o1].lnx.zip")
@@ -75,7 +81,7 @@ else
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/builtin=/builtin")
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/lib=/lib")
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/main.py=/main.py")
-	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/data/com.micropythonos.system.wifiservice/config.json=/data/com.micropythonos.system.wifiservice/config.json")
+	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/data/prefs/com.micropythonos.system.wifiservice/config.json=/data/com.micropythonos.system.wifiservice/config.json")
 fi
 
 #"$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gb/best" \
@@ -106,7 +112,7 @@ done
 make_for_year() {
 	year="$1"
 
-	rm "$mydir"/../littlefs2_$year.bin
+	rm -f "$mydir"/../littlefs2_$year.bin
 	# -m 1024 -r 256: inline_max = min(1024, 1022, 512) = 512 bytes. Files ≤512 B get inlined during image creation
 	"$mydir"/mklittlefs_pack.sh -b 4096 -r 256 -m 1024  -s 0x700000 -o "$mydir"/../littlefs2_$year.bin \
         "internalsd/shared=/" \
