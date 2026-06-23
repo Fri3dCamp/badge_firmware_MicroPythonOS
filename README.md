@@ -21,7 +21,7 @@ MicroPythonOS:
 - 3584 KiB = 3.5 MiB ota1
 
 The current *unified* ESP32S3 build that has support for all ESP32S3-based devices
-that MicroPythonOS supports is 3476 KiB in size, so this leaves 108 KiB for future growth.
+that MicroPythonOS supports is 3509 KiB in size, so this leaves 75 KiB for future growth.
 
 If at some point in the future, that turns out not to be enough, further size optimization can be achieved
 by making a *non-unified*, custom build for the Fri3d Camp badges, excluding all unnecessary drivers and board support.
