@@ -13,17 +13,17 @@ fi
 # retro-go launchers:
 apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # not com.micropythonos.doom_launcher because doom is not included
 # utilities:
-apps="$apps com.micropythonos.imageview com.quasikili.quasicalculator"
+apps="$apps com.micropythonos.imageview com.quasikili.quasicalculator com.quasikili.quasinametag"
 # demos
 apps="$apps com.micropythonos.confetti com.micropythonos.showfonts"
 # hardware tests
 apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropythonos.lora_chat com.micropythonos.ir_remote com.micropythonos.showbattery"
 # audio:
-apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder"
+apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder com.micropythonos.thefreelanternplayer"
 # games:
 apps="$apps com.micropythonos.connect4 com.quasikili.quasibird com.micropythonos.lights_out com.micropythonos.memory"
-# utilities:
-apps="$apps com.quasikili.quasinametag"
+# comms:
+apps="$apps com_micropythonos_nostr"
 # optional hardware:
 apps="$apps com.micropythonos.dj_addon"
 
