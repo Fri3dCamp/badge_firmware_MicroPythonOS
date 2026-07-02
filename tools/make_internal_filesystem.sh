@@ -21,7 +21,7 @@ apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropyth
 # audio:
 apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder com.micropythonos.thefreelanternplayer"
 # games:
-apps="$apps com.micropythonos.connect4 com.quasikili.quasibird com.micropythonos.lights_out com.micropythonos.memory"
+apps="$apps com.micropythonos.connect4 com.quasikili.quasibird com.micropythonos.lights_out com.micropythonos.memory com.micropythonos.breakout com.micropythonos.sortit"
 # comms:
 apps="$apps com_micropythonos_nostr"
 # optional hardware:
