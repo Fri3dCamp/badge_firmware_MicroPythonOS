@@ -75,7 +75,7 @@ if [ -z "$debug" ]; then
 	# Precompiling the apps saves around 156KiB and makes them faster to start
 	compiledappdir="/tmp/compiled_app_dir"
 	rm -rf "$compiledappdir"
-	"$mposdir"/scripts/compile_dir.sh "$appdir" "$compiledappdir"
+	"$mposdir"/scripts/compile_dir.sh -march=xtensawin "$appdir" "$compiledappdir"
 	appdir="$compiledappdir"
 else
 	extra+=("$HOME/projects/MicroPythonOS/claude/MicroPythonOS/internal_filesystem/builtin=/builtin")
