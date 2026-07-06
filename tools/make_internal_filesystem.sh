@@ -38,7 +38,7 @@ appdir="$mposdir/internal_filesystem/apps/"
 
 extra=()
 if [ -z "$debug" ]; then
-	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
+	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip=/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).png=/romart/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).png")
