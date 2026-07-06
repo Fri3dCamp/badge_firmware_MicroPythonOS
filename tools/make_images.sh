@@ -15,7 +15,8 @@ retrodir="/home/user/sources/DukeNano3D/retro-go-for-DukeNano3D"
 
 ls -al "$retrodir"/retro-core/build/retro-core.bin "$retrodir"/duke3d-go/build/duke3d-go.bin
 
-size=$(du -b "$mposfile")
+ls -al "$mposfile"
+size=$(du -b "$mposfile" | cut -f 1)
 if [ $size -gt 3670016 ]; then
 	echo "ERROR: file doesnt fit partition!"
 	exit 1
