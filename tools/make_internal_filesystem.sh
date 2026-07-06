@@ -37,10 +37,8 @@ mposdir="$HOME/projects/MicroPythonOS/claude/MicroPythonOS"
 appdir="$mposdir/internal_filesystem/apps/"
 
 extra=()
-extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/Columns_DX.png=/romart/gbc/Columns_DX.png")
-extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/homebrew/Columns_DX.zip=/roms/gbc/homebrew/Columns_DX.zip")
 if [ -z "$debug" ]; then
-	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
+	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip=/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).png=/romart/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).png")
@@ -62,26 +60,47 @@ if [ -z "$debug" ]; then
 	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gb=/romart/gb") # 15KB
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/")
-	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/4-in-1 Fun Pak (USA, Europe).png=/romart/gb/4-in-1 Fun Pak (USA, Europe).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/0/0E0216E6.png=/romart/gb/4-in-1 Fun Pak (USA, Europe).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/6/6C41D3CD.png=/romart/gb/Batman - The Video Game (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/E/ED6771DB.png=/romart/gb/Ferrari Grand Prix Challenge (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/6/6ED10383.png=/romart/gb/Golf (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/A/A662A8EF.png=/romart/gb/Looney Tunes (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/7/7B822D8F.png=/romart/gb/Mickey's Dangerous Chase (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/3/318DBDE1.png=/romart/gb/Motocross Maniacs (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/6/6DA713E3.png=/romart/gb/Pinball Dreams (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/5/5D8DEB5B.png=/romart/gb/Star Wars (USA) (Rev-A).png")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/Super Mario Land (USA) (Rev-A).png")
-	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/6/6C41D3CD.png=/romart/gb/Batman - The Video Game (USA)..png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/5/5009215F.png=/romart/gb/Tennis (USA).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/0/0636D89E.png=/romart/gb/Tom and Jerry (USA).png")
 
-	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gbc/homebrew=/roms/gbc/homebrew") # 778KB
-	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gbc=/romart/gbc") # 66KB
 
-	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gbc/") # Only has battleship
+	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gbc/")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/8/8E6F8037.png=/romart/gbc/Battleship - The Classic Naval Combat Game (USA).png")
+
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/Columns_DX.png=/romart/gbc/Columns_DX.png")
+	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/homebrew/Columns_DX.zip=/roms/gbc/homebrew/Columns_DX.zip")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/best/=/roms/nes/")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/B/B668C7FC.png=/romart/nes/Castlevania (USA) (Rev 1).png")
+	#extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/Donkey Kong (World) (Rev 1).png") # works
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/6/6F97C721.png=/romart/nes/Donkey Kong (World) (Rev 1).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/E/EAF7ED72.png=/romart/nes/Legend of Zelda, The (USA) (Rev 1).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/4/43D30C2F.png=/romart/nes/Ms. Pac-Man (USA) (Tengen) (Unl).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/C/CA594ACE.png=/romart/nes/Super Mario Bros. 2 (USA) (Rev 1).png")
 
-	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/nes/homebrew/=/roms/nes/homebrew") # 1111KB
-	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/nes/=/romart/nes") # 71KB
-
-	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/0/053014FF.png") # Donkey Kong
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/homebrew/2048 (Blurred Lines).zip=/roms/nes/homebrew/2048 (Blurred Lines).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/2048 (Blurred Lines).png=/romart/nes/2048 (Blurred Lines).png")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/pce/World Court Tennis (U).pce.zip=/roms/pce/World Court Tennis (U).pce.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/pce/World Court Tennis (U).png=/romart/pce/World Court Tennis (U).png")
+
+	# Too big and not great:
+	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/nes/homebrew/=/roms/nes/homebrew") # 1111KB
+	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/nes/=/romart/nes") # 71KB
+	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gbc/homebrew=/roms/gbc/homebrew") # 778KB
+	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gbc=/romart/gbc") # 66KB
+
 	# Precompiling the apps saves around 156KiB and makes them faster to start
 	compiledappdir="/tmp/compiled_app_dir"
 	rm -rf "$compiledappdir"
