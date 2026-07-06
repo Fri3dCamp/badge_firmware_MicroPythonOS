@@ -1,6 +1,7 @@
 --before default_reset --after no_reset --chip esp32s3  write_flash --flash_mode dio --flash_size 16MB --flash_freq 80m --baud 460800
 0x0 bootloader.bin
 0x8000 partitions.16mb.bin
+0x9000 otadata.bin
 0x10000 MicroPythonOS_esp32s3.ota
 0x390000 MicroPythonOS_esp32s3.ota
 0x710000 retro_go_core_2026.bin

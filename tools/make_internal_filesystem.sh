@@ -62,8 +62,9 @@ if [ -z "$debug" ]; then
 	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gb=/romart/gb") # 15KB
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/")
-	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png") # Super Mario Land
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/4-in-1 Fun Pak (USA, Europe).png=/romart/gb/4-in-1 Fun Pak (USA, Europe).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/Super Mario Land (USA) (Rev-A).png")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/6/6C41D3CD.png=/romart/gb/Batman - The Video Game (USA)..png")
 
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gbc/homebrew=/roms/gbc/homebrew") # 778KB
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gbc=/romart/gbc") # 66KB

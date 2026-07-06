@@ -63,6 +63,8 @@ jobs:
           mv MicroPythonOS_esp32s3_*.ota MicroPythonOS_esp32s3.ota
           echo "Extract bootloader"
           dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
+          echo "Extract otadata (filled with 0xff)"
+          dd if=MicroPythonOS_esp32s3.bin of=otadata.bin bs=1 count=8192 skip=36864
           #truncate -s -3 littlefs2_2024.bin
       - name: Build full images
         uses: espressif/esp-idf-ci-action@v1
@@ -70,7 +72,7 @@ jobs:
           esp_idf_version: v5.5.1
           target: esp32s3
           path: 'boards/2024/build'
-          command: gen_esp32part.py --flash-size 16MB ../../shared/partitions.16mb.csv > partitions.16mb.bin && zip -j fri3d_flasher_2026_firmware_for_2024_badge.zip ../flash_args MicroPythonOS_esp32s3.ota bootloader.bin partitions.16mb.bin retro_go_core_2024.bin retro_go_duke3d_2024.bin retro_go_prboom_2024.bin littlefs2_2024.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2026_firmware_for_2024_badge.bin/g" ../flash_args | sed "s/ --baud 460800//g")
+          command: gen_esp32part.py --flash-size 16MB ../../shared/partitions.16mb.csv > partitions.16mb.bin && zip -j fri3d_flasher_2026_firmware_for_2024_badge.zip ../flash_args MicroPythonOS_esp32s3.ota bootloader.bin partitions.16mb.bin otadata.bin retro_go_core_2024.bin retro_go_duke3d_2024.bin retro_go_prboom_2024.bin littlefs2_2024.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2026_firmware_for_2024_badge.bin/g" ../flash_args | sed "s/ --baud 460800//g")
       - name: Upload binaries to draft release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -108,6 +110,8 @@ jobs:
           mv MicroPythonOS_esp32s3_*.ota MicroPythonOS_esp32s3.ota
           echo "Extract bootloader"
           dd if=MicroPythonOS_esp32s3.bin of=bootloader.bin bs=1 count=32768
+          echo "Extract otadata (filled with 0xff)"
+          dd if=MicroPythonOS_esp32s3.bin of=otadata.bin bs=1 count=8192 skip=36864
           #truncate -s -3 littlefs2_2026.bin
       - name: Build full images
         uses: espressif/esp-idf-ci-action@v1
@@ -115,7 +119,7 @@ jobs:
           esp_idf_version: v5.5.1
           target: esp32s3
           path: 'boards/2026/build'
-          command: gen_esp32part.py --flash-size 16MB ../../shared/partitions.16mb.csv > partitions.16mb.bin && zip -j fri3d_flasher_2026_firmware_for_2026_badge.zip ../flash_args MicroPythonOS_esp32s3.ota bootloader.bin partitions.16mb.bin retro_go_core_2026.bin retro_go_duke3d_2026.bin retro_go_prboom_2026.bin littlefs2_2026.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2026_firmware_for_2026_badge.bin/g" ../flash_args | sed "s/ --baud 460800//g")
+          command: gen_esp32part.py --flash-size 16MB ../../shared/partitions.16mb.csv > partitions.16mb.bin && zip -j fri3d_flasher_2026_firmware_for_2026_badge.zip ../flash_args MicroPythonOS_esp32s3.ota bootloader.bin partitions.16mb.bin otadata.bin retro_go_core_2026.bin retro_go_duke3d_2026.bin retro_go_prboom_2026.bin littlefs2_2026.bin && esptool.py $(sed "s/write_flash/merge_bin -o full_2026_firmware_for_2026_badge.bin/g" ../flash_args | sed "s/ --baud 460800//g")
       - name: Upload binaries to draft release
         env:
           GH_TOKEN: ${{ github.token }}
