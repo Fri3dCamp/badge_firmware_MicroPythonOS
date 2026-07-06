@@ -117,7 +117,7 @@ add_single_file() {
     local parent; parent=$(dirname "$dest_rel")
     mkdir -p "$TMPDIR/$parent"
 
-    if [[ "$dest_rel" =~ \.png$ ]]; then
+    if [[ "$dest_rel" == romart/* && "$dest_rel" =~ \.png$ ]]; then
         local orig_size; orig_size=$(stat -Lc '%s' "$src_abs")
         mkdir -p "$(dirname "$OPT_DIR/$dest_rel")"
         cp "$src_abs" "$OPT_DIR/$dest_rel"

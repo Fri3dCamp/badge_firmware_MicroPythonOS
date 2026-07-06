@@ -82,7 +82,6 @@ if [ -z "$debug" ]; then
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/best/=/roms/nes/")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/B/B668C7FC.png=/romart/nes/Castlevania (USA) (Rev 1).png")
-	#extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/Donkey Kong (World) (Rev 1).png") # works
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/6/6F97C721.png=/romart/nes/Donkey Kong (World) (Rev 1).png")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/E/EAF7ED72.png=/romart/nes/Legend of Zelda, The (USA) (Rev 1).png")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/4/43D30C2F.png=/romart/nes/Ms. Pac-Man (USA) (Tengen) (Unl).png")
