@@ -2,7 +2,7 @@
 	"Language":	0,
 	"FontType":	5,
 	"Theme":	null,
-	"Timezone":	"EST+5",
+	"Timezone":	"UTC+02:00",
 	"Migration":	1440,
 	"Indicators":	2,
 	"AudioDriver":	"buzzer",
