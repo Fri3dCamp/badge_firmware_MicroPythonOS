@@ -45,11 +45,14 @@ if [ -z "$debug" ]; then
 	#extra+=("$HOME/sources/DukeNano3D/outputs_starryskyline_fixpipebomb/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
 	#extra+=("$HOME/sources/DukeNano3D/outputs_fix_title_images/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
 	#extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
-	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip=/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Turbo Sub (1991) [a1].lnx.zip=/roms/lnx/Turbo Sub (1991) [a1].lnx.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Warbirds (1990) [o1].lnx.zip=/roms/lnx/Warbirds (1990) [o1].lnx.zip")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/europe/Castle of Illusion Starring Mickey Mouse (E).sms.zip=/roms/sms/Castle of Illusion Starring Mickey Mouse (E).sms.zip")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip=/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip")
 
 	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gb/homebrew=/roms/gb/homebrew") # 72KB
@@ -57,11 +60,10 @@ if [ -z "$debug" ]; then
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gb/best/=/roms/gb/")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/2/2C27EC70.png=/romart/gb/2/2C27EC70.png") # Super Mario Land
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/gb/4-in-1 Fun Pak (USA, Europe).png=/romart/gb/4-in-1 Fun Pak (USA, Europe).png")
 
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gbc/homebrew=/roms/gbc/homebrew") # 778KB
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gbc=/romart/gbc") # 66KB
-        extra+=("$HOME/ESP32_NES/microsd_zips/roms/gb/collection/4-in-1 Fun Pak (USA, Europe).zip=/roms/gbc/4-in-1 Fun Pak (USA, Europe).zip")
-	extra+=("$HOME/ESP32_NES/microsd_zips/romart/gb/4-in-1 Fun Pak (USA, Europe).png=/romart/gbc/4-in-1 Fun Pak (USA, Europe).png")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gbc/")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/1/1C13DBB0.png=/romart/gbc/1/1C13DBB0.png")
