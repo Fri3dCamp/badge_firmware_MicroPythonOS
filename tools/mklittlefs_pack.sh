@@ -102,10 +102,13 @@ if [[ ! -x "$MKFS" ]]; then
 fi
 
 TMPDIR=$(mktemp -d)/
-trap 'rm -rf "$TMPDIR"' EXIT
+OPT_DIR=$(mktemp -d)/
+trap 'rm -rf "$TMPDIR" "$OPT_DIR"' EXIT
 
 FROMFILE="$TMPDIR/filelist.txt"
 >"$FROMFILE"
+
+TOTAL_SAVED=0
 
 add_single_file() {
     local src_abs="$1"
@@ -113,7 +116,34 @@ add_single_file() {
 
     local parent; parent=$(dirname "$dest_rel")
     mkdir -p "$TMPDIR/$parent"
-    ln -sf "$src_abs" "$TMPDIR/$dest_rel"
+
+    if [[ "$dest_rel" =~ \.png$ ]]; then
+        local orig_size; orig_size=$(stat -Lc '%s' "$src_abs")
+        mkdir -p "$(dirname "$OPT_DIR/$dest_rel")"
+        cp "$src_abs" "$OPT_DIR/$dest_rel"
+        local png="$OPT_DIR/$dest_rel"
+
+        convert "$png" -resize '120x120>' "$png" 2>/dev/null || true
+        ~/software/pngquant --speed 1 --strip --ext .png --skip-if-larger --force "$png" 2>/dev/null || true
+        # ponytail: zopflipng has no --skip-if-larger, guard manually
+        cp "$png" "$png.pre_zopfli"
+        ~/software/zopfli/zopflipng --iterations=5 --filters=01234mepb --lossy_8bit --lossy_transparent -y "$png" "$png" 2>/dev/null || true
+        if [[ $(stat -Lc '%s' "$png") -gt $(stat -Lc '%s' "$png.pre_zopfli") ]]; then
+            mv "$png.pre_zopfli" "$png"
+        else
+            rm -f "$png.pre_zopfli"
+        fi
+
+        local new_size; new_size=$(stat -Lc '%s' "$png")
+        local saved=$((orig_size - new_size))
+        TOTAL_SAVED=$((TOTAL_SAVED + saved))
+        printf '  PNG optimized: %s  %d -> %d  (-%d)\n' "$dest_rel" "$orig_size" "$new_size" "$saved"
+
+        ln -sf "$png" "$TMPDIR/$dest_rel"
+    else
+        ln -sf "$src_abs" "$TMPDIR/$dest_rel"
+    fi
+
     echo "$dest_rel" >> "$FROMFILE"
 }
 
@@ -175,5 +205,9 @@ MKFS_OPTS=(
 [[ -n "$MEMORY" ]] && MKFS_OPTS+=(-m "$MEMORY")
 
 "$MKFS" "${MKFS_OPTS[@]}" "$OUTPUT"
+
+if [[ $TOTAL_SAVED -gt 0 ]]; then
+    echo "=== PNG optimization saved $TOTAL_SAVED bytes ($(( TOTAL_SAVED / 1024 )) KB) ==="
+fi
 
 echo "=== Done: $OUTPUT ==="
