@@ -15,11 +15,12 @@ apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # no
 # utilities:
 apps="$apps com.micropythonos.imageview com.quasikili.quasicalculator com.quasikili.quasinametag"
 # demos
-apps="$apps com.micropythonos.confetti com.micropythonos.showfonts"
+apps="$apps com.micropythonos.confetti"
 # hardware tests
 apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropythonos.lora_chat com.micropythonos.ir_remote com.micropythonos.showbattery"
 # audio:
-apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder com.micropythonos.thefreelanternplayer"
+# com.micropythonos.thefreelanternplayer needs work
+apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder"
 # games:
 apps="$apps com.micropythonos.connect4 com.quasikili.quasibird com.micropythonos.lights_out com.micropythonos.memory com.micropythonos.breakout com.micropythonos.sorter"
 # comms:
@@ -39,11 +40,6 @@ extra=()
 extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/Columns_DX.png=/romart/gbc/Columns_DX.png")
 extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/homebrew/Columns_DX.zip=/roms/gbc/homebrew/Columns_DX.zip")
 if [ -z "$debug" ]; then
-	#extra+=("$HOME/sources/DukeNano3D/outputs_precalculated_pngs_pngquant_40-71_2_iterations_500/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
-	#extra+=("$HOME/sources/DukeNano3D/outputs/E1L1-2_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_2_compromise.grp.zip")
-	#extra+=("$HOME/sources/DukeNano3D/outputs_onlysmaller_replaceskyline/E1L1-3_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_3_compromise.grp.zip")
-	#extra+=("$HOME/sources/DukeNano3D/outputs_starryskyline_fixpipebomb/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
-	#extra+=("$HOME/sources/DukeNano3D/outputs_fix_title_images/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
 	extra+=("$HOME/sources/DukeNano3D/outputs_fix_FEM1/E1L1-4_compromise.grp.zip=/roms/duke3d/Shareware_Ep_1_Level_1_to_4_compromise.grp.zip")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip=/roms/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).zip")
@@ -54,13 +50,13 @@ if [ -z "$debug" ]; then
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Warbirds (1990) [o1].lnx.zip=/roms/lnx/Warbirds (1990) [o1].lnx.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/lnx/Warbirds (1990) [o1].png=/romart/lnx/Warbirds (1990) [o1].png")
 
-	#extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/europe/Castle of Illusion Starring Mickey Mouse (E).sms.zip=/roms/sms/Castle of Illusion Starring Mickey Mouse (E).sms.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/world/Rampage (UE).sms.zip=/roms/sms/Rampage (UE).sms.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/sms/Rampage (UE).png=/romart/sms/Rampage (UE).png")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/brazil/Baku Baku Animal (BR).sms.zip=/roms/sms/Baku Baku Animal (BR).sms.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/sms/Baku Baku Animal (BR).png=/romart/sms/Baku Baku Animal (BR).png")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip=/roms/col/Zaxxon (1982) (Sega) [b1].rom.zip")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/col/Zaxxon (1982) (Sega) [b1].png=/romart/col/Zaxxon (1982) (Sega) [b1].png")
 
 	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gb/homebrew=/roms/gb/homebrew") # 72KB
 	extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gb=/romart/gb") # 15KB
@@ -72,17 +68,19 @@ if [ -z "$debug" ]; then
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/gbc/homebrew=/roms/gbc/homebrew") # 778KB
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/gbc=/romart/gbc") # 66KB
 
-	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gbc/")
-	extra+=("$HOME/ESP32_NES/microsd_final/romart/gbc/1/1C13DBB0.png=/romart/gbc/1/1C13DBB0.png")
+	extra+=("$HOME/ESP32_NES/microsd_final/roms/gbc/best/=/roms/gbc/") # Only has battleship
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/best/=/roms/nes/")
 
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/roms/nes/homebrew/=/roms/nes/homebrew") # 1111KB
 	#extra+=("$HOME/ESP32_NES/internalsd_zips_2026/romart/nes/=/romart/nes") # 71KB
 
-	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/0/053014FF.png") # Donkey Kong CRC romart test
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/0/053014FF.png=/romart/nes/0/053014FF.png") # Donkey Kong
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/nes/homebrew/2048 (Blurred Lines).zip=/roms/nes/homebrew/2048 (Blurred Lines).zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/nes/2048 (Blurred Lines).png=/romart/nes/2048 (Blurred Lines).png")
+
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/pce/World Court Tennis (U).pce.zip=/roms/pce/World Court Tennis (U).pce.zip")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/pce/World Court Tennis (U).png=/romart/pce/World Court Tennis (U).png")
 	# Precompiling the apps saves around 156KiB and makes them faster to start
 	compiledappdir="/tmp/compiled_app_dir"
 	rm -rf "$compiledappdir"
