@@ -50,7 +50,9 @@ if [ -z "$debug" ]; then
 	extra+=("$HOME/ESP32_NES/microsd_final/romart/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).png=/romart/gg/Sonic The Hedgehog - Triple Trouble (USA, Europe, Brazil).png")
 
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Turbo Sub (1991) [a1].lnx.zip=/roms/lnx/Turbo Sub (1991) [a1].lnx.zip")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/lnx/Turbo Sub (1991) [a1].png=/romart/lnx/Turbo Sub (1991) [a1].png")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/lnx/Warbirds (1990) [o1].lnx.zip=/roms/lnx/Warbirds (1990) [o1].lnx.zip")
+	extra+=("$HOME/ESP32_NES/microsd_final/romart/lnx/Warbirds (1990) [o1].png=/romart/lnx/Warbirds (1990) [o1].png")
 
 	#extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/europe/Castle of Illusion Starring Mickey Mouse (E).sms.zip=/roms/sms/Castle of Illusion Starring Mickey Mouse (E).sms.zip")
 	extra+=("$HOME/ESP32_NES/microsd_final/roms/sms/world/Rampage (UE).sms.zip=/roms/sms/Rampage (UE).sms.zip")
