@@ -22,7 +22,7 @@ apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropyth
 # com.micropythonos.thefreelanternplayer needs work
 apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder"
 # games:
-apps="$apps com.micropythonos.connect4 com.quasikili.quasibird com.micropythonos.lights_out com.micropythonos.memory com.micropythonos.breakout com.micropythonos.sorter com.micropythonos.space_invaders"
+apps="$apps com.micropythonos.connect4 com.quasikili.quasibird com.micropythonos.lights_out com.micropythonos.memory com.micropythonos.breakout com.micropythonos.sorter"
 # comms:
 apps="$apps com_micropythonos_nostr com.quasikili.wikipedia"
 # optional hardware:
