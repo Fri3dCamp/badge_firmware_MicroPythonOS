@@ -8,6 +8,8 @@
 # - otadata size should be 0x2000
 # - app partitions should be aligned at 0x10000 (64k block)
 
+# label, type, subtype, offset, size
+# ----------------------------------
 otadata,	data,	ota,	0x9000,	0x2000,
 nvs,	data,	nvs,	0xb000,	0x5000,
 ota_0,	app,	ota_0,	0x10000,	0x380000,
