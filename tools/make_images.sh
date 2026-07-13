@@ -9,8 +9,9 @@ gen_esp32part.py --flash-size 16MB boards/shared/partitions.16mb.csv > partition
 #esptool.py $(sed "s/write_flash/merge_bin -o full_2026.img/g" boards/2026/flash_args | sed "s/ --baud 460800//g")
 
 mposdir="/home/user/projects/MicroPythonOS/claude/MicroPythonOS/lvgl_micropython/lib/micropython/ports/esp32/build-ESP32_GENERIC_S3-SPIRAM_OCT/"
-#mposfile=/tmp/MicroPythonOS_esp32s3_0.14.1.ota
 mposfile="$mposdir"/micropython.bin
+#mposfile=/tmp/MicroPythonOS_esp32s3_0.14.1.ota
+#mposfile=/home/user/Downloads/0.15.0/MicroPythonOS_esp32s3_0.15.0.ota
 retrodir="/home/user/sources/DukeNano3D/retro-go-for-DukeNano3D"
 
 ls -al "$retrodir"/retro-core/build/retro-core.bin "$retrodir"/duke3d-go/build/duke3d-go.bin
