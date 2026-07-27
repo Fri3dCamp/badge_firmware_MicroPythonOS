@@ -150,8 +150,10 @@ make_for_year() {
 
 }
 
-make_for_year 2024
 make_for_year 2026
+#make_for_year 2024
+cp "$mydir"/../littlefs2_2026.bin "$mydir"/../littlefs2_2024.bin
+
 
 echo "Extracting..."
 cd "$mydir"
