@@ -1,0 +1,62 @@
+name: Publish BadgeHub version
+description: Update BadgeHub draft metadata version and publish a new revision
+
+# Expects BADGEHUB_PROJECT_TOKEN in the job environment.
+
+inputs:
+  version:
+    description: Version string written to BadgeHub metadata
+    required: true
+  badgehub_api_url:
+    description: BadgeHub API base URL
+    required: false
+    default: "https://badgehub.eu/api/v3"
+  badgehub_app_id:
+    description: BadgeHub project / app id
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Update draft metadata version and publish
+      shell: bash
+      env:
+        FIRMWARE_VERSION: ${{ inputs.version }}
+        BADGEHUB_API_URL: ${{ inputs.badgehub_api_url }}
+        BADGEHUB_APP_ID: ${{ inputs.badgehub_app_id }}
+      run: |
+        set -euo pipefail
+
+        if [[ -z "${BADGEHUB_PROJECT_TOKEN:-}" ]]; then
+          echo "::error::BADGEHUB_PROJECT_TOKEN must be set in the job environment."
+          exit 1
+        fi
+
+        metadata_url="${BADGEHUB_API_URL}/projects/${BADGEHUB_APP_ID}/draft/files/metadata.json"
+        echo "Downloading draft metadata.json from ${metadata_url}..."
+        curl --fail-with-body --show-error --silent \
+          --header "badgehub-api-token: Bearer ${BADGEHUB_PROJECT_TOKEN}" \
+          --output metadata.json \
+          "${metadata_url}"
+
+        echo "Updating metadata.json version to '${FIRMWARE_VERSION}'..."
+        jq --arg version "${FIRMWARE_VERSION}" '.version = $version' metadata.json > metadata.updated.json
+        echo "Updated metadata.json version: $(jq -r '.version' metadata.updated.json)"
+
+        draft_metadata_url="${BADGEHUB_API_URL}/projects/${BADGEHUB_APP_ID}/draft/metadata"
+        echo "Uploading updated metadata.json to ${draft_metadata_url}..."
+        curl --fail-with-body --show-error --silent \
+          --request PATCH \
+          --header "badgehub-api-token: Bearer ${BADGEHUB_PROJECT_TOKEN}" \
+          --header "Content-Type: application/json" \
+          --data-binary @metadata.updated.json \
+          "${draft_metadata_url}"
+        echo "Uploaded updated metadata.json."
+
+        publish_url="${BADGEHUB_API_URL}/projects/${BADGEHUB_APP_ID}/publish"
+        echo "Publishing BadgeHub draft at ${publish_url}..."
+        curl --fail-with-body --show-error --silent \
+          --request PATCH \
+          --header "badgehub-api-token: Bearer ${BADGEHUB_PROJECT_TOKEN}" \
+          "${publish_url}"
+        echo "Published BadgeHub project '${BADGEHUB_APP_ID}' for version '${FIRMWARE_VERSION}'."
