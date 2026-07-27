@@ -1,0 +1,69 @@
+name: Upload release file to BadgeHub
+description: Download one asset from a GitHub release and upload it to a BadgeHub project draft
+
+# Expects BADGEHUB_PROJECT_TOKEN in the job environment.
+# Uses the automatic GITHUB_TOKEN for gh release download.
+
+inputs:
+  release_tag:
+    description: GitHub release tag that contains the asset
+    required: true
+  release_filename:
+    description: Asset filename on the GitHub release
+    required: true
+  badgehub_filename:
+    description: Filename to use on BadgeHub (defaults to release_filename)
+    required: false
+    default: ""
+  badgehub_api_url:
+    description: BadgeHub API base URL
+    required: false
+    default: "https://badgehub.eu/api/v3"
+  badgehub_app_id:
+    description: BadgeHub project / app id
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Download release asset and upload to BadgeHub
+      shell: bash
+      env:
+        RELEASE_TAG: ${{ inputs.release_tag }}
+        RELEASE_FILENAME: ${{ inputs.release_filename }}
+        BADGEHUB_FILENAME: ${{ inputs.badgehub_filename }}
+        BADGEHUB_API_URL: ${{ inputs.badgehub_api_url }}
+        BADGEHUB_APP_ID: ${{ inputs.badgehub_app_id }}
+      run: |
+        set -euo pipefail
+
+        if [[ -z "${BADGEHUB_PROJECT_TOKEN:-}" ]]; then
+          echo "::error::BADGEHUB_PROJECT_TOKEN must be set in the job environment."
+          exit 1
+        fi
+
+        badgehub_filename="${BADGEHUB_FILENAME:-$RELEASE_FILENAME}"
+        workdir="$(mktemp -d)"
+        cleanup() { rm -rf "${workdir}"; }
+        trap cleanup EXIT
+
+        echo "Downloading release asset '${RELEASE_FILENAME}' from '${RELEASE_TAG}'..."
+        gh release download "${RELEASE_TAG}" \
+          --repo "${GITHUB_REPOSITORY}" \
+          --pattern "${RELEASE_FILENAME}" \
+          --dir "${workdir}"
+
+        source_path="${workdir}/${RELEASE_FILENAME}"
+        if [[ ! -f "${source_path}" ]]; then
+          echo "::error::Expected release asset not found at ${source_path}"
+          exit 1
+        fi
+
+        upload_url="${BADGEHUB_API_URL}/projects/${BADGEHUB_APP_ID}/draft/files/${badgehub_filename}"
+        echo "Uploading '${RELEASE_FILENAME}' to BadgeHub as '${badgehub_filename}'..."
+        curl --fail-with-body --show-error --silent \
+          --request POST \
+          --header "badgehub-api-token: Bearer ${BADGEHUB_PROJECT_TOKEN}" \
+          --form "file=@${source_path};filename=${badgehub_filename}" \
+          "${upload_url}"
+        echo "Uploaded '${badgehub_filename}' to BadgeHub."

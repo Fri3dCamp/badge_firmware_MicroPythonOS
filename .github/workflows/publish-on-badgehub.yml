@@ -1,0 +1,53 @@
+name: Publish Firmware on BadgeHub
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  BADGEHUB_API_URL: ${{ vars.BADGEHUB_API_URL || 'https://badgehub.eu/api/v3' }}
+  BADGEHUB_APP_ID: ${{ vars.BADGEHUB_APP_ID || 'be.fri3d.badge_firmware_micropythonos' }}
+  BADGEHUB_PROJECT_TOKEN: ${{ secrets.BADGEHUB_PROJECT_TOKEN }}
+  FIRMWARE_VERSION: ${{ github.event.release.tag_name }}
+
+jobs:
+  publish-on-badgehub:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate BADGEHUB_PROJECT_TOKEN is set
+        if: ${{ env.BADGEHUB_PROJECT_TOKEN == '' }}
+        run: |
+          echo "::error::BADGEHUB_PROJECT_TOKEN is required."
+          exit 1
+
+      - name: Upload 2024 firmware to BadgeHub
+        uses: ./.github/actions/badgehub-upload-release-file
+        with:
+          release_tag: ${{ env.FIRMWARE_VERSION }}
+          release_filename: full_2026_firmware_for_2024_badge.bin
+          badgehub_filename: full_2026_firmware_for_2024_badge.bin
+          badgehub_api_url: ${{ env.BADGEHUB_API_URL }}
+          badgehub_app_id: ${{ env.BADGEHUB_APP_ID }}
+
+      - name: Upload 2026 firmware to BadgeHub
+        uses: ./.github/actions/badgehub-upload-release-file
+        with:
+          release_tag: ${{ env.FIRMWARE_VERSION }}
+          release_filename: full_2026_firmware_for_2026_badge.bin
+          badgehub_filename: full_2026_firmware_for_2026_badge.bin
+          badgehub_api_url: ${{ env.BADGEHUB_API_URL }}
+          badgehub_app_id: ${{ env.BADGEHUB_APP_ID }}
+
+      - name: Set version and publish on BadgeHub
+        uses: ./.github/actions/badgehub-publish-version
+        with:
+          version: ${{ env.FIRMWARE_VERSION }}
+          badgehub_api_url: ${{ env.BADGEHUB_API_URL }}
+          badgehub_app_id: ${{ env.BADGEHUB_APP_ID }}
