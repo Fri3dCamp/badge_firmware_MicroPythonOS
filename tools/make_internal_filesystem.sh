@@ -30,7 +30,7 @@ apps="$apps com.micropythonos.dj_addon"
 
 # Cleanups
 pushd "$HOME/projects/MicroPythonOS/claude/MicroPythonOS"
-./scripts/cleanup_pyc.sh
+./scripts/cleanup_pyc_mpy.sh
 popd
 
 mposdir="$HOME/projects/MicroPythonOS/claude/MicroPythonOS"
