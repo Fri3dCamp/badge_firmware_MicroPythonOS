@@ -2,7 +2,7 @@
 
 This repository holds the main firmware for the Fri3d Camp 2024 and 2026 badges.
 
-It uses [MicroPythonOS](https://MicroPythonOS.com) as the main operating system and [Retro-Go](https://github.com/ducalex/retro-go) for dedicated gaming partitions.
+It uses [MicroPythonOS](https://MicroPythonOS.org) as the main operating system and [Retro-Go](https://github.com/ducalex/retro-go) for dedicated gaming partitions.
 
 ## Partition layout
 
