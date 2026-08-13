@@ -17,8 +17,8 @@ Partitions should be aligned to 64KB
 - 0xb000 nvs (size 0x5000)
 
 MicroPythonOS:
-- 3584 KiB = 3.5 MiB ota0
-- 3584 KiB = 3.5 MiB ota1
+- 3584 KiB = 3.5 MiB ota_0
+- 3584 KiB = 3.5 MiB ota_1
 
 The current *unified* ESP32S3 build that has support for all ESP32S3-based devices
 that MicroPythonOS supports is 3509 KiB in size, so this leaves 75 KiB for future growth.
