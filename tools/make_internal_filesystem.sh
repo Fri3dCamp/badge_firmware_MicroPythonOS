@@ -15,9 +15,9 @@ apps="com.micropythonos.duke_launcher com.micropythonos.retrocore_launcher" # no
 # utilities:
 apps="$apps com.micropythonos.imageview com.quasikili.quasicalculator com.quasikili.quasinametag com.micropythonos.texteditor"
 # demos
-#apps="$apps com.micropythonos.confetti"
+apps="$apps com.micropythonos.confetti"
 # hardware tests
-apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropythonos.lora_chat com.micropythonos.ir_remote" # com.micropythonos.showbattery"
+apps="$apps com.micropythonos.imu com.micropythonos.time_of_flight com.micropythonos.lora_chat com.micropythonos.ir_remote com.micropythonos.showbattery"
 # audio:
 # com.micropythonos.thefreelanternplayer needs work
 apps="$apps com.micropythonos.musicplayer com.micropythonos.soundrecorder"
